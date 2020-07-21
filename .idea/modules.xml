@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/project-layout-parent.iml" filepath="$PROJECT_DIR$/project-layout-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projet-layout-dao/projet-layout-dao.iml" filepath="$PROJECT_DIR$/projet-layout-dao/projet-layout-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projet-layout-rest/projet-layout-rest.iml" filepath="$PROJECT_DIR$/projet-layout-rest/projet-layout-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projet-layout-service/projet-layout-service.iml" filepath="$PROJECT_DIR$/projet-layout-service/projet-layout-service.iml" />
+    </modules>
+  </component>
+</project>

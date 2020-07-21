@@ -1,0 +1,17 @@
+proj\entity\Assignment$AssignmentBuilder.class
+proj\entity\QMainTechnology.class
+proj\entity\MainTechnology$MainTechnologyBuilder.class
+proj\repo\BaseRepository.class
+proj\repo\MainTechnologyRepo.class
+proj\repo\ResourceRepo.class
+proj\entity\QAssignment.class
+proj\entity\Assignment.class
+proj\entity\QProject.class
+proj\entity\Resource.class
+proj\entity\QResource.class
+proj\repo\AssignmentRepo.class
+proj\entity\Project.class
+proj\repo\ProjectRepo.class
+proj\entity\Project$ProjectBuilder.class
+proj\entity\MainTechnology.class
+proj\entity\Resource$ResourceBuilder.class

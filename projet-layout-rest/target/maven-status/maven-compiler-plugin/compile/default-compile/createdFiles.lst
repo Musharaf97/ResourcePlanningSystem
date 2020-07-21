@@ -1,0 +1,7 @@
+proj\controller\MainTechnologyController.class
+proj\controller\ProjectController.class
+proj\controller\AssignmentController.class
+proj\App.class
+proj\controller\ResourceController.class
+proj\execptions\ProjectNotFoundException.class
+proj\Config\ApplicationConfiguration.class

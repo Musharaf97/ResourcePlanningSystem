@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="projet-layout-dao" />
+        <module name="projet-layout-service" />
+        <module name="projet-layout-rest" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="project-layout-parent" target="11" />
+      <module name="projet-layout" target="11" />
+      <module name="projet-layout-dao" target="11" />
+      <module name="projet-layout-rest" target="11" />
+      <module name="projet-layout-service" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="projet-layout" options="-parameters" />
+      <module name="projet-layout-dao" options="-parameters" />
+      <module name="projet-layout-rest" options="-parameters" />
+      <module name="projet-layout-service" options="-parameters" />
+    </option>
+  </component>
+</project>
