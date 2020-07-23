@@ -21,7 +21,9 @@ import service.impl.AssignmentService;
 import service.impl.MainTechnologyService;
 import service.impl.ProjectService;
 import service.impl.ResourceService;
+import service.model.AssignResourceDto;
 
+import java.time.LocalDate;
 
 
 @SpringBootApplication
@@ -38,6 +40,9 @@ public class App {
                                          ResourceRepo resourceRepo, AssignmentRepo assignmentRepo, MainTechnologyRepo mainTechnologyRepo) {
         return args -> {
 
+            LocalDate startDate = LocalDate.of(2020,7,22);
+            LocalDate endDate = LocalDate.of(2022,5,4);
+
             Project project1 = Project.builder().title("GDD").BL("bl4").startDate("20-May-2009").endDate("20-May-2010").status("Active").winChance(.2).build();
             projectRepo.save(project1);
 
@@ -47,16 +52,17 @@ public class App {
             Resource resource1 = Resource.builder().firstName("Musharaf").lastName("Mirza").factory("Engineering").level(2.1).profile("Front End").visa("MMG").status("Active").build();
             resourceRepo.save(resource1);
 
-            MainTechnology nodeJs = MainTechnology.builder().mainTechnologyName("Node.js").build();
+            MainTechnology Test = MainTechnology.builder().mainTechnologyName("Test").build();
             MainTechnology java = MainTechnology.builder().mainTechnologyName("Java").build();
-            mainTechnologyRepo.save(nodeJs);
+            mainTechnologyRepo.save(Test);
             mainTechnologyRepo.save(java);
 
-            Assignment assignment1 = Assignment.builder().main_role("PM").allotment(0.3).resource(resource1).project(project2).mainTechnologies(nodeJs).build();
+            Assignment assignment1 = Assignment.builder().main_role("PM").allotment(0.3).resource(resource1).project(project2).mainTechnology(java).startDate(startDate).endDate(endDate).build();
             assignmentRepo.save(assignment1);
 
-            Assignment assignment2 = Assignment.builder().main_role("Engineer").allotment(0.2).resource(resource1).project(project2).mainTechnologies(nodeJs).build();
+            Assignment assignment2 = Assignment.builder().main_role("Engineer").allotment(0.2).resource(resource1).project(project2).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
             assignmentRepo.save(assignment2);
+
 
         };
     }

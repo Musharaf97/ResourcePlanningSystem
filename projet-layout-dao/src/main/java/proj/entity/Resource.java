@@ -1,24 +1,21 @@
 package proj.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString(of = {"resourceId"})
 @Entity
 @Table(name = "RESOURCE")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Resource implements Serializable {
-
-    @OneToMany(mappedBy = "resource", fetch = FetchType.LAZY)
-    private Set<Assignment> assignments;
 
     @Id
     @Column(name = "RESOURCE_ID")

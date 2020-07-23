@@ -1,6 +1,9 @@
+service\model\ResourceDto.class
+service\execptions\ProjectException.class
 service\model\ProjectDto$ProjectDtoBuilder.class
 service\impl\MainTechnologyService.class
 service\model\AssignResourceDto$AssignResourceDtoBuilder.class
+service\model\ResourceDto$ResourceDtoBuilder.class
 service\model\ProjectDto.class
 service\impl\ResourceService.class
 service\model\AssignResourceDto.class

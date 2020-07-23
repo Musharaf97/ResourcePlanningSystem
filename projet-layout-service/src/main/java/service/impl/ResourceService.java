@@ -24,10 +24,6 @@ public class ResourceService {
         return resourceRepo.findAll();
     }
 
-//    public Optional<List<Project>> findResourceByAssignment(Double assignment) {
-//        return resourceRepo.findResourceByAssignment(assignment);
-//    }
-
     public Resource save(Resource resource)
     {
         return resourceRepo.save(resource);

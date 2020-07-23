@@ -2,6 +2,7 @@ package service.model;
 
 import lombok.Builder;
 import lombok.Data;
+import proj.entity.Project;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ProjectDto {
+
 
     Long projectId;
     String status;

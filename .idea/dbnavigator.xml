@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3">
-        <schema name="rpsdb" object-types="column, function, index, procedure, view, table, constraint" />
+        <schema name="rpsdb" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
@@ -41,6 +41,7 @@
     <connection id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3" dataset="rpsdb.assignment" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3" dataset="rpsdb.resource" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

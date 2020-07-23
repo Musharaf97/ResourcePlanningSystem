@@ -48,8 +48,5 @@ public class ProjectService {
         projectRepo.delete(project);
     }
 
-    public List<Project> findAllProject (ProjectDto request){
-        return projectRepo.findAll();
-    }
 
 }

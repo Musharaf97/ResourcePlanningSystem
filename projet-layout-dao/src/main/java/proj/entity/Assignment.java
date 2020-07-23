@@ -1,16 +1,17 @@
 package proj.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
+@ToString(of = {"assignmentId"})
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
-@ToString(of = {"assignmentId"})
 @Entity
 @Table(name = "ASSIGNMENT")
 public class Assignment implements Serializable {
@@ -33,15 +34,15 @@ public class Assignment implements Serializable {
     private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "RESOURCE_ID", nullable = false)
+    @JoinColumn(name = "resourceId", nullable = false)
     private Resource resource;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PROJECT_ID", nullable = false)
+    @JoinColumn(name = "projectId", nullable = false)
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "mainTechnology_id")
-    private MainTechnology mainTechnologies;
+    @JoinColumn(name = "mainTechnologyId")
+    private MainTechnology mainTechnology;
 
 }

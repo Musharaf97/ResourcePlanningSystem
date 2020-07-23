@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -19,8 +18,6 @@ public class QProject extends EntityPathBase<Project> {
     private static final long serialVersionUID = -252448097L;
 
     public static final QProject project = new QProject("project");
-
-    public final SetPath<Assignment, QAssignment> assignments = this.<Assignment, QAssignment>createSet("assignments", Assignment.class, QAssignment.class, PathInits.DIRECT2);
 
     public final StringPath BL = createString("BL");
 

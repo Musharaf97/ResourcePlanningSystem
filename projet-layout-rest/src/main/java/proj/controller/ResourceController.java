@@ -3,9 +3,8 @@ package proj.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proj.entity.Project;
 import proj.entity.Resource;
-import proj.execptions.ProjectNotFoundException;
+import service.execptions.ProjectException;
 import service.impl.ResourceService;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class ResourceController {
         this.resourceService = resourceService;
     }
 
-    //all resources
+    //SEARCH ALL RESOURCES
     @GetMapping("/resources")
     List<Resource> findAll(){
         List<Resource> projectList = resourceService.findAll();
@@ -39,25 +38,14 @@ public class ResourceController {
                 );
     }
 
-//    //SEARCH BY STATUS
-//    @GetMapping(value = "/resources/{assignment}")
-//    public ResponseEntity<List<Project>> searchByAssignment(@PathVariable(value = "assignment") Double assignment) {
-//        Optional<List<Project>> optionalResources = Optional.ofNullable(resourceService.findResourceByAssignment(assignment)
-//                .orElseThrow(() -> new ProjectNotFoundException("No resource found!")));
-//        return optionalResources
-//                .map(resource -> ResponseEntity.ok().body(resource))
-//                .orElseGet(() -> ResponseEntity.notFound().build()
-//                );
-
     //ADD RESOURCE
     @PostMapping(path = "/addresource" , consumes = "application/json", produces = "application/json")
-//    @CrossOrigin(origins = "http://localhost:4200/addproject")
     Resource addResource (@RequestBody Resource resource){
         String resourceVisa = resource.getVisa();
         if(resourceVisa != null && !"".equals(resourceVisa)){
             Optional<Resource> existingResource = resourceService.findFirstByVisa(resourceVisa);
             if(existingResource.isPresent()){
-                throw new ProjectNotFoundException("Project : "+resourceVisa+" exists!");
+                throw new ProjectException("Project : "+resourceVisa+" exists!");
             }
         }
         return resourceService.save(resource);

@@ -30,7 +30,7 @@ public class QAssignment extends EntityPathBase<Assignment> {
 
     public final StringPath main_role = createString("main_role");
 
-    public final QMainTechnology mainTechnologies;
+    public final QMainTechnology mainTechnology;
 
     public final QProject project;
 
@@ -56,7 +56,7 @@ public class QAssignment extends EntityPathBase<Assignment> {
 
     public QAssignment(Class<? extends Assignment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.mainTechnologies = inits.isInitialized("mainTechnologies") ? new QMainTechnology(forProperty("mainTechnologies")) : null;
+        this.mainTechnology = inits.isInitialized("mainTechnology") ? new QMainTechnology(forProperty("mainTechnology")) : null;
         this.project = inits.isInitialized("project") ? new QProject(forProperty("project")) : null;
         this.resource = inits.isInitialized("resource") ? new QResource(forProperty("resource")) : null;
     }

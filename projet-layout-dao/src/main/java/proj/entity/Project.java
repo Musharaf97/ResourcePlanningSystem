@@ -1,10 +1,10 @@
 package proj.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +15,9 @@ import java.util.Set;
 @Data
 @Entity
 @Builder
-@ToString(of = {"projectId","startDate","endDate"})
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of = {"projectId"})
 @Table(name = "PROJECT")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Project implements Serializable {
@@ -24,9 +26,6 @@ public class Project implements Serializable {
     @Column(name = "PROJECT_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long projectId;
-
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-    private Set<Assignment> assignments;
 
     @Column(name = "TITLE")
     private String title;
