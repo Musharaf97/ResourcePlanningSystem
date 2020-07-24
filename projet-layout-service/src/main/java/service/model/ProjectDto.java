@@ -1,25 +1,21 @@
 package service.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import proj.entity.Project;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProjectDto {
 
 
-    Long projectId;
+    Long assignmentId;
     String status;
     String title;
-    String BL;
 
-    LocalDate startDate;
-    LocalDate endDate;
-
-    BigDecimal winChance;
 
 }

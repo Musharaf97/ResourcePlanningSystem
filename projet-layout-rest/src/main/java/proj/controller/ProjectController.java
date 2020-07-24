@@ -37,7 +37,7 @@ public class ProjectController {
     @GetMapping(value = "/project/{status}")
     public ResponseEntity<List<Project>> searchByStatus(@PathVariable(value = "status") String status) {
         Optional<List<Project>> projectOptional = Optional.ofNullable(projectService.findProjectByStatus(status)
-                .orElseThrow(() -> new ProjectException("Project with status "+status+" not found")));
+                .orElseThrow(() -> new ProjectException("Project with status "+status+" not found or assigned in project!")));
         return projectOptional
                 .map(project -> ResponseEntity.ok().body(project))
                 .orElseGet(() -> ResponseEntity.notFound().build()

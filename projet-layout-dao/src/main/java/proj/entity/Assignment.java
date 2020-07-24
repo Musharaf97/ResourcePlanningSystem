@@ -22,7 +22,7 @@ public class Assignment implements Serializable {
     private Long assignmentId;
 
     @Column(name = "MAIN_ROLE")
-    private String main_role;
+    private String mainRole;
 
     @Column(name = "ALLOTMENT")
     private Double allotment;

@@ -1,11 +1,13 @@
 package proj.repo;
 
 import proj.entity.Assignment;
+import proj.entity.Project;
 
-import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 public interface AssignmentRepo extends BaseRepository<Assignment, Long> {
 
-
+    Optional<List<Assignment>> findByProject_ProjectId(long projectId);
+    Optional<List<Assignment>> findByResource_ResourceId(long resourceId);
 }

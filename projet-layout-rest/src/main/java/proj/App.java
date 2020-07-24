@@ -21,7 +21,7 @@ import service.impl.AssignmentService;
 import service.impl.MainTechnologyService;
 import service.impl.ProjectService;
 import service.impl.ResourceService;
-import service.model.AssignResourceDto;
+
 
 import java.time.LocalDate;
 
@@ -46,21 +46,33 @@ public class App {
             Project project1 = Project.builder().title("GDD").BL("bl4").startDate("20-May-2009").endDate("20-May-2010").status("Active").winChance(.2).build();
             projectRepo.save(project1);
 
-            Project project2 = Project.builder().title("EasyGov").BL("bl11").startDate("20-May-2009").endDate("20-May-2010").status("Not-Active").winChance(.5).build();
+            Project project2 = Project.builder().title("EasyGov").BL("bl11").startDate("20-May-2009").endDate("20-May-2010").status("Active").winChance(.5).build();
             projectRepo.save(project2);
 
-            Resource resource1 = Resource.builder().firstName("Musharaf").lastName("Mirza").factory("Engineering").level(2.1).profile("Front End").visa("MMG").status("Active").build();
+            Resource resource1 = Resource.builder().firstName("Musharaf").lastName("Mirza").factory("Engineering").level(1.0).profile("Trainee").visa("MMG").status("Active").build();
             resourceRepo.save(resource1);
+
+            Resource resource2 = Resource.builder().firstName("Imrith").lastName("Shakeel").factory("Engineering").level(3.0).profile("PM").visa("SDI").status("Active").build();
+            resourceRepo.save(resource2);
+
+            Resource resource3 = Resource.builder().firstName("Sohun").lastName("Anoop").factory("Engineering").level(3.0).profile("Associate Architect").visa("AKN").status("Active").build();
+            resourceRepo.save(resource3);
 
             MainTechnology Test = MainTechnology.builder().mainTechnologyName("Test").build();
             MainTechnology java = MainTechnology.builder().mainTechnologyName("Java").build();
             mainTechnologyRepo.save(Test);
             mainTechnologyRepo.save(java);
 
-            Assignment assignment1 = Assignment.builder().main_role("PM").allotment(0.3).resource(resource1).project(project2).mainTechnology(java).startDate(startDate).endDate(endDate).build();
+            Assignment assignment1 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(java).startDate(startDate).endDate(endDate).build();
             assignmentRepo.save(assignment1);
 
-            Assignment assignment2 = Assignment.builder().main_role("Engineer").allotment(0.2).resource(resource1).project(project2).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
+            Assignment assignment2 = Assignment.builder().mainRole("PM").allotment(1.0).resource(resource2).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
+            assignmentRepo.save(assignment2);
+
+            Assignment assignment3 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
+            assignmentRepo.save(assignment3);
+
+            Assignment assignment4 = Assignment.builder().mainRole("Architect").allotment(1.0).resource(resource3).project(project1).mainTechnology(java).startDate(startDate).endDate(endDate).build();
             assignmentRepo.save(assignment2);
 
 

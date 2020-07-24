@@ -9,5 +9,4 @@ public interface ProjectRepo extends BaseRepository<Project, Long> {
 
     Optional<List<Project>> findProjectByStatus(String status);
     Optional<List<Project>> getByTitle(String title);
-
 }

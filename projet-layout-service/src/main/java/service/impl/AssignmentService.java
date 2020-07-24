@@ -4,15 +4,15 @@ package service.impl;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.stereotype.Component;
 import proj.entity.Assignment;
+import proj.entity.Project;
 import proj.entity.QAssignment;
-import proj.entity.QMainTechnology;
-import proj.entity.QProject;
 import proj.repo.AssignmentRepo;
 import service.model.AssignResourceDto;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.LongStream;
 
 
@@ -33,10 +33,11 @@ public class AssignmentService {
         // 1) does user exist
 
         // 2) does mainTechnologyId exist
-        BooleanExpression doesMainTechnologyExist = QMainTechnology.mainTechnology.mainTechnologyId.eq(request.getMainTechnologyId());
+//        BooleanExpression doesMainTechnologyExist = QMainTechnology.mainTechnology.mainTechnologyId.eq(request.getMainTechnologyId());
+        BooleanExpression doesMainTechnologyExist = QAssignment.assignment.mainTechnology.mainTechnologyId.eq(request.getMainTechnologyId());
 
         // 3) does project exist
-        BooleanExpression doesProjectExist = QProject.project.projectId.eq(request.getProjectId());
+        BooleanExpression doesProjectExist = QAssignment.assignment.project.projectId.eq(request.getProjectId());
         // 4) is resource over allocated
         BooleanExpression hasVisa = QAssignment.assignment.resource.visa.eq(request.getVisa());
         BooleanExpression isInRange = QAssignment.assignment.endDate.lt(request.getStartDate())
@@ -61,12 +62,22 @@ public class AssignmentService {
         return assignmentRepo.save(assignment);
     }
 
-//    public Assignment save(Assignment assignment) {
-//        return assignmentRepo.save(assignment);
-//    }
-
+    //find all assignments
     public List<Assignment> findAll() {
         return assignmentRepo.findAll();
     }
 
+
+    public Optional<List<Assignment>> findAssignmentByProjectId(long projectId) {
+        return assignmentRepo.findByProject_ProjectId(projectId);
+    }
+
+    public Optional<List<Assignment>> findAssignmentByResourceId(long resourceId) {
+        return assignmentRepo.findByResource_ResourceId(resourceId);
+    }
+
 }
+
+
+
+

@@ -1,17 +1,22 @@
 package proj.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import proj.entity.Project;
 import proj.entity.Resource;
 import service.execptions.ProjectException;
 import service.impl.ResourceService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@EnableAutoConfiguration
 public class ResourceController {
 
     @Autowired
@@ -21,21 +26,21 @@ public class ResourceController {
         this.resourceService = resourceService;
     }
 
+    //SEARCH BY ID
+    @GetMapping(value = "/resource/{id}")
+    public ResponseEntity<Resource> findResourceById (@PathVariable(value = "id") Long id) {
+        Optional<Resource> resourceById = resourceService.findResourceById(id);
+        return resourceById
+                .map(resource -> ResponseEntity.ok().body(resource))
+                .orElseGet(() -> ResponseEntity.notFound().build()
+                );
+    }
+
     //SEARCH ALL RESOURCES
     @GetMapping("/resources")
     List<Resource> findAll(){
         List<Resource> projectList = resourceService.findAll();
         return resourceService.findAll();
-    }
-
-    //SEARCH BY ID
-    @GetMapping(value = "/resource/{id}")
-    public ResponseEntity<Resource> searchById(@PathVariable(value = "id") Long id) {
-        Optional<Resource> resourceById = resourceService.findResourceById(id);
-        return resourceById
-                .map(project -> ResponseEntity.ok().body(project))
-                .orElseGet(() -> ResponseEntity.notFound().build()
-                );
     }
 
     //ADD RESOURCE
@@ -50,6 +55,19 @@ public class ResourceController {
         }
         return resourceService.save(resource);
     }
+
+    //DELETE RESOURCE
+    @DeleteMapping("/deleteresourcebyid/{id}")
+    public Map<String, String> deleteResource(
+            @PathVariable(value = "id") Long resourceId) {
+        Resource resource = resourceService.findResourceById(resourceId)
+                .orElseThrow(() -> new IllegalStateException("Resource with id : " + resourceId + " cannot be found or assigned in a project!"));
+        resourceService.deleteResource(resource);
+        Map<String, String> response = new HashMap<>();
+        response.put("Resource :" + resourceId, "Deleted");
+        return response;
+    }
+
 
 
 }

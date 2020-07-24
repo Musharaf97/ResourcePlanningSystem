@@ -2,6 +2,7 @@ package service.impl;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import proj.entity.Project;
 import proj.entity.Resource;
 import proj.repo.ResourceRepo;
 
@@ -35,5 +36,9 @@ public class ResourceService {
 
     public Optional<Resource> findResourceById(Long id) {
         return resourceRepo.findById(id);
+    }
+
+    public void deleteResource(Resource resource){
+        resourceRepo.delete(resource);
     }
 }

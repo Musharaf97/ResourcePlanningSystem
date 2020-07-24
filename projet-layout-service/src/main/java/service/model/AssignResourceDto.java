@@ -21,6 +21,7 @@ public class AssignResourceDto  {
     String visa;
     Long projectId;
     Long mainTechnologyId;
+    String projectTitle;
     String mainRole;
 
     Double allotment;
