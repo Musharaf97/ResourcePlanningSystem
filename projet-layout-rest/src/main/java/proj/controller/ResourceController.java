@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import proj.entity.Project;
 import proj.entity.Resource;
 import service.execptions.ProjectException;
 import service.impl.ResourceService;
@@ -67,6 +66,26 @@ public class ResourceController {
         response.put("Resource :" + resourceId, "Deleted");
         return response;
     }
+
+    //UPDATE RESOURCE
+    @PutMapping("/updateresource/{id}")
+    Resource updateResource(@RequestBody Resource newResource, @PathVariable Long id){
+        return resourceService.findResourceById(id)
+                .map(resource -> {
+                    resource.setLastName(newResource.getLastName());
+                    resource.setFirstName(newResource.getFirstName());
+                    resource.setFactory(newResource.getFactory());
+                    resource.setLevel(newResource.getLevel());
+//                    resource.setVisa(newResource.getVisa());
+                    resource.setProfile(newResource.getProfile());
+                    resource.setStatus(newResource.getStatus());
+                    return resourceService.save(resource);
+                }).orElseGet(() -> {
+                    newResource.setResourceId(id);
+                    return resourceService.save(newResource);
+                });
+    }
+
 
 
 

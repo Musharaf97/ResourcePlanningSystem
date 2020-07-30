@@ -1,10 +1,12 @@
 package proj.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+
 
 
 @ToString(of = {"assignmentId"})
@@ -14,6 +16,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "ASSIGNMENT")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Assignment implements Serializable {
 
     @Id
@@ -28,10 +31,10 @@ public class Assignment implements Serializable {
     private Double allotment;
 
     @Column(name = "START_DATE")
-    private LocalDate startDate;
+    private String startDate;
 
     @Column(name = "END_DATE")
-    private LocalDate endDate;
+    private String endDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "resourceId", nullable = false)
@@ -42,7 +45,7 @@ public class Assignment implements Serializable {
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "mainTechnologyId")
+    @JoinColumn(name = "mainTechnologyId", nullable = false)
     private MainTechnology mainTechnology;
 
 }

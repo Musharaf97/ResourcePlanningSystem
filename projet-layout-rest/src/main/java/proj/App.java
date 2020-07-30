@@ -63,17 +63,17 @@ public class App {
             mainTechnologyRepo.save(Test);
             mainTechnologyRepo.save(java);
 
-            Assignment assignment1 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(java).startDate(startDate).endDate(endDate).build();
-            assignmentRepo.save(assignment1);
-
-            Assignment assignment2 = Assignment.builder().mainRole("PM").allotment(1.0).resource(resource2).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
-            assignmentRepo.save(assignment2);
-
-            Assignment assignment3 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
-            assignmentRepo.save(assignment3);
-
-            Assignment assignment4 = Assignment.builder().mainRole("Architect").allotment(1.0).resource(resource3).project(project1).mainTechnology(java).startDate(startDate).endDate(endDate).build();
-            assignmentRepo.save(assignment2);
+//            Assignment assignment1 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(java).startDate(startDate).endDate(endDate).build();
+//            assignmentRepo.save(assignment1);
+//
+//            Assignment assignment2 = Assignment.builder().mainRole("PM").allotment(1.0).resource(resource2).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
+//            assignmentRepo.save(assignment2);
+//
+//            Assignment assignment3 = Assignment.builder().mainRole("Engineer").allotment(1.0).resource(resource1).project(project1).mainTechnology(Test).startDate(startDate).endDate(endDate).build();
+//            assignmentRepo.save(assignment3);
+//
+            Assignment assignment4 = Assignment.builder().mainRole("Architect").allotment(0.1).resource(resource3).project(project1).mainTechnology(java).startDate("startDate").endDate("endDate").build();
+            assignmentRepo.save(assignment4);
 
 
         };

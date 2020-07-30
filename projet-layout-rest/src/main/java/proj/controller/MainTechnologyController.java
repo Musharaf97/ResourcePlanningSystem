@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @EnableAutoConfiguration
 @Transactional
+@CrossOrigin(origins = "http://localhost:4200")
 public class MainTechnologyController {
 
     @Autowired

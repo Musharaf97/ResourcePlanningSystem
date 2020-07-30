@@ -73,7 +73,6 @@ public class ProjectController {
         return projectService.findProjectById(id)
                 .map(project -> {
                     project.setBL(newProject.getBL());
-                    project.setTitle(newProject.getTitle());
                     project.setEndDate(newProject.getEndDate());
                     project.setStartDate(newProject.getStartDate());
                     project.setStatus(newProject.getStatus());
@@ -96,4 +95,6 @@ public class ProjectController {
         response.put("Project :" + projectId, "Deleted");
         return response;
     }
+
+
 }

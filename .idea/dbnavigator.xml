@@ -25,13 +25,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3">
-        <schema name="rpsdb" object-types="table, view" />
+        <schema name="rpsdb" object-types="procedure, constraint, function, table, index, view, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bb5a8fa5-7816-4cdb-94f3-13dadec445e3">
-      <console name="Rpsdb" type="STANDARD" schema="Student2" session="Main">select allotment, main_role, project.bl, project.end_date, project.start_date, project.status, project.title, project.win_chance, resource.factory, resource.firstname, resource.lastname, resource.level, resource.profile, resource.status, resource.visa  from assignment left join project on assignment.project_id = project.project_id left join resource on assignment.resource_id = resource.resource_id;</console>
+      <console name="Rpsdb" type="STANDARD" schema="Student2" session="Main"><![CDATA[select allotment, main_role, project.bl, project.end_date, project.start_date, project.status, project.title, project.win_chance, resource.factory, resource.firstname, resource.lastname, resource.level, resource.profile, resource.status, resource.visa  from assignment left join project on assignment.project_id = project.project_id left join resource on assignment.resource_id = resource.resource_id;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

@@ -1,5 +1,6 @@
 package service.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +19,19 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class AssignResourceDto  {
 
-    String visa;
+//    String visa;
+    Long resourceId;
     Long projectId;
     Long mainTechnologyId;
-    String projectTitle;
     String mainRole;
-
     Double allotment;
+    String startDate;
+    String endDate;
 
-    LocalDate startDate;
-    LocalDate endDate;
+//    @JsonFormat(pattern = "dd-MM-yyyy")
+//    LocalDate startDate;
+//
+//    @JsonFormat(pattern = "dd-MM-yyyy")
+//    LocalDate endDate;
 
 }

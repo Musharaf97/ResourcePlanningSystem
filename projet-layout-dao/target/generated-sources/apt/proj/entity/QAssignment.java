@@ -26,9 +26,9 @@ public class QAssignment extends EntityPathBase<Assignment> {
 
     public final NumberPath<Long> assignmentId = createNumber("assignmentId", Long.class);
 
-    public final DatePath<java.time.LocalDate> endDate = createDate("endDate", java.time.LocalDate.class);
+    public final StringPath endDate = createString("endDate");
 
-    public final StringPath main_role = createString("main_role");
+    public final StringPath mainRole = createString("mainRole");
 
     public final QMainTechnology mainTechnology;
 
@@ -36,7 +36,7 @@ public class QAssignment extends EntityPathBase<Assignment> {
 
     public final QResource resource;
 
-    public final DatePath<java.time.LocalDate> startDate = createDate("startDate", java.time.LocalDate.class);
+    public final StringPath startDate = createString("startDate");
 
     public QAssignment(String variable) {
         this(Assignment.class, forVariable(variable), INITS);

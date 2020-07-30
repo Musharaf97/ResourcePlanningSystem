@@ -1,14 +1,16 @@
 package proj.controller;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import proj.entity.Assignment;
+import proj.entity.Project;
+import proj.entity.QAssignment;
 import service.execptions.ProjectException;
 import service.impl.AssignmentService;
+import service.model.AssignResourceDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @EnableAutoConfiguration
+@CrossOrigin(origins = "http://localhost:4200")
 public class AssignmentController {
 
     @Autowired
@@ -35,7 +38,7 @@ public class AssignmentController {
 
     //SEARCH BY Project id
     @GetMapping(value = "/assignments/project/{projectId}")
-    public ResponseEntity<List<Assignment>> searchByStatus(@PathVariable(value = "projectId") long projectId) {
+    public ResponseEntity<List<Assignment>> searchByProjectId(@PathVariable(value = "projectId") long projectId) {
         Optional<List<Assignment>> assignmentList = Optional.ofNullable(assignmentService.findAssignmentByProjectId(projectId)
                 .orElseThrow(() -> new ProjectException("Project with ID " + projectId + " not found !")));
         return assignmentList
@@ -55,5 +58,9 @@ public class AssignmentController {
                 );
     }
 
-
+    //Add assignment by projectId, maintechnologyId, resourceId
+    @PostMapping(path = "/assignresource" , consumes = "application/json", produces = "application/json")
+    Assignment addResource(@RequestBody Assignment assignment){
+        return assignmentService.save(assignment);
+    }
 }
