@@ -79,24 +79,35 @@ public class AssignmentService {
         return assignmentRepo.findByResource_ResourceId(resourceId);
     }
 
+    public Optional<List<Assignment>> findAssignmentByResource(Resource resource) {
+        return assignmentRepo.findByResource(resource);
+    }
+
     //save resource
     public Assignment save(Assignment assignment) {
-        BooleanExpression hasVisa = QAssignment.assignment.resource.resourceId.isNull();
-        List<Assignment> existingAssignment = (List<Assignment>) assignmentRepo.findAll(hasVisa);
+        BooleanExpression getResource = QAssignment.assignment.resource.eq(assignment.getResource());
+        List<Assignment> existingAssignment = (List<Assignment>) assignmentRepo.findAll(getResource);
 
-            Double totalAllotment = existingAssignment.stream().map(Assignment::getAllotment).reduce(0.0, Double::sum);
-            if (totalAllotment >= 1.0) {
+            Double totalAllotment = existingAssignment
+                    .stream()
+                    .map(Assignment::getAllotment)
+                    .reduce(0.0, Double::sum);
+
+            if (totalAllotment >= 1) {
                 throw new IllegalStateException("Resource is over-allocated!");
             }
-        return assignmentRepo.save(assignment);
+                return assignmentRepo.save(assignment);
     }
 
     public Assignment assignResource(AssignResourceDto request){
+
         Assignment assignment = new Assignment();
         return assignmentRepo.save(assignment) ;
     }
 
-
+    public Optional<Assignment> findAssignmentById(Long id) {
+        return assignmentRepo.findById(id);
+    }
 
 }
 

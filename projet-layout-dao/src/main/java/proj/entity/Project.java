@@ -41,6 +41,9 @@ public class Project implements Serializable {
     @Column(name = "WIN_CHANCE")
     private Double winChance;
 
+    @Column(name = "No_Of_Resources")
+    private Integer noOfResources;
+
     }
 
 

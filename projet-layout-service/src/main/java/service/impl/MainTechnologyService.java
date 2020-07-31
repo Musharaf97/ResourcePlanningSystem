@@ -8,6 +8,7 @@ import proj.entity.Project;
 import proj.repo.MainTechnologyRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
@@ -30,5 +31,11 @@ public class MainTechnologyService {
         return mainTechnologyRepo.findAll();
     }
 
+    public Optional<MainTechnology> findById(Long id) {
+        return mainTechnologyRepo.findById(id);
+    }
 
+    public void deletMainTech(MainTechnology mainTechnology){
+        mainTechnologyRepo.delete(mainTechnology);
+    }
 }

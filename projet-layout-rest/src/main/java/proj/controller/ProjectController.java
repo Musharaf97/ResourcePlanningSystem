@@ -77,6 +77,7 @@ public class ProjectController {
                     project.setStartDate(newProject.getStartDate());
                     project.setStatus(newProject.getStatus());
                     project.setWinChance(newProject.getWinChance());
+                    project.setNoOfResources(newProject.getNoOfResources());
                     return projectService.save(project);
                 }).orElseGet(() -> {
                     newProject.setProjectId(id);
